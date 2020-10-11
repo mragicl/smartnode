@@ -1,64 +1,35 @@
-# Rocket Pool - Smart Node Package
+# Rocket Pool - Smart Node Package - Proof of concept for Raspberry Pi 4
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/rocket-pool/rocketpool/master/images/logo.png?raw=true" alt="Rocket Pool - Next Generation Decentralised Ethereum Proof-of-Stake (PoS) Infrastructure Service and Pool" width="500" />
-</p>
 
 ---
 
-`Rocket Pool 2.5` is a next generation Ethereum proof of stake (PoS) infrastructure service designed to be highly decentralised, distributed and compatible with Ethereum 2.0, the new consensus protocol that Ethereum will transition to in 2020.
-
-Running a Rocket Pool smart node allows you to stake on Ethereum 2.0 with only 16 ETH, and earn a higher return than you would outside the network.
-
-This repository contains the source code for:
-
-* The Rocket Pool smart node client (CLI), which is used to manage a smart node either locally or remotely (over SSH)
-* The Rocket Pool smart node service, which provides an API for client communication and performs background node tasks
-* The Rocket Pool smart node PoW proxy, a simple Eth 1.0 client proxy server for communicating with remote Eth 1.0 services such as Infura
-
-The smart node service and PoW proxy are designed to be run as part of a docker stack and generally do not need to be installed manually.
-See the [Rocket Pool dockerhub](https://hub.docker.com/u/rocketpool) page for a complete list of docker images.
+Fork of the rocketpool x86_64 version, see: [rocketpool smartnode](https://github.com/rocket-pool/smartnode). Proof of concept which works with raspberry pi 4, running ubuntu 20.04 (64bit!). It loads the docker images from docker hub mragicl user. Only compiled for lighthouse! When you configure your rocketpool node, you have to choose infura as eth1 client and lighthouse as eth2 client. I will add the other clients at a later time.
 
 
 ## Installation
 
-See the [Smart Node Installer](https://github.com/rocket-pool/smartnode-install) repository for supported platforms and installation instructions.
+Download and run this script: [install.sh](https://raw.githubusercontent.com/mragicl/smartnode/v0.0.4-rpi4/downloads/install.sh) with:
+```bash
+cd $HOME
+wget https://raw.githubusercontent.com/mragicl/smartnode/v0.0.4-rpi4/downloads/install.sh
+./install.sh
+```
+
+I adjusted the install script from rocketpool (see: [smartnode-install](https://github.com/rocket-pool/smartnode-install)) to use the appropiate packages for rpi4 (docker-compose), and to configure the docker-compose.yml and config.yml in your .rocketpool to use the docker images compiled for arm64.
 
 
-## CLI Commands
+Once you ran above install script, open a new shell (or source $HOME/.profile), and you have all rocketpool commands available. You can start immediatly with
+```
+rocketpool service config
+```
+Please select infura as eth1 and lighthouse as eth2 client. Then you can start the eth1 and eth2 clients with:
+```
+rocketpool service start
+```
+and do all the steps as described here: https://medium.com/rocket-pool/rocket-pool-v2-5-beta-node-operators-guide-77859891766b
 
-The following commands are available via the smart node client:
 
-- `rocketpool service install` - Install the Rocket Pool service either locally or to a remote server
-- `rocketpool service config` - Configure the Rocket Pool service for use
-- `rocketpool service status` - Display the current status of the Rocket Pool service
-- `rocketpool service start` - Start the Rocket Pool service to begin running a smart node
-- `rocketpool service pause` - Pause the Rocket Pool service temporarily
-- `rocketpool service stop` - Stop the Rocket Pool service and remove all associated docker containers
-- `rocketpool service logs [services...]` - View the logs for one or more services running as part of the docker stack
-- `rocketpool service stats` - Display resource usage statistics for the Rocket Pool service
-
-- `rocketpool wallet status` - Display the current status of the node's wallet
-- `rocketpool wallet init` - Initialize the node's password and wallet
-- `rocketpool wallet recover` -  Recover a node wallet from a mnemonic phrase
-- `rocketpool wallet export` - Export the node's wallet information
-
-- `rocketpool faucet withdraw [token]` - Withdraw ETH or tokens from the RP faucet (beta only)
-
-- `rocketpool node status` - Display the current status of the node
-- `rocketpool node register` - Register the node with the Rocket Pool network
-- `rocketpool node set-timezone` - Update the node's timezone location
-- `rocketpool node deposit` - Make a deposit to create a minipool and begin staking
-- `rocketpool node send [amount] [token] [to]` - Send an amount of ETH or tokens to an address
-
-- `rocketpool minipool status` - Display the current status of all minipools run by the node
-- `rocketpool minipool refund` - Refund ETH from minipools which have had user-deposited ETH assigned to them
-- `rocketpool minipool dissolve` - Dissolve initialized minipools and recover deposited ETH from them
-- `rocketpool minipool withdraw` - Withdraw rewards from minipools which have finished staking and close them
-- `rocketpool minipool close` - Close minipools which have timed out and been dissolved
-
-- `rocketpool network node-fee` - Display the current network node commission rate for new minipools
-
-- `rocketpool queue status` - Display the current status of the deposit pool
-- `rocketpool queue process` - Process the deposit pool by assigning user-deposited ETH to available minipools
+## Thanks
+Let me know about your impressions and how it works: mragicl@protonmail.com
+https://etherscan.io/address/0xcc6AEAA7703C4993B8B8FE6bDe2c4814a5a373B9
 
