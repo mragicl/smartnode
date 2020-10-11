@@ -229,7 +229,7 @@ progress 7 "Copying package files to Rocket Pool user data directory..."
 # Download the arm64 rocketpool cli
 progress 8 "Downloading and install arm64 rocketpool cli"
 { mkdir -p $HOME/bin || fail "Could not create bin directory."; } >&2
-{ curl -o $HOME/bin/rocketpool "https://github.com/mragicl/smartnode/raw/v0.0.4-rpi4/downloads/rocketpool-cli-linux-arm64"; } >&2
+{ wget -O $HOME/bin/rocketpool "https://github.com/mragicl/smartnode/raw/v0.0.4-rpi4/downloads/rocketpool-cli-linux-arm64"; } >&2
 
 
 }
