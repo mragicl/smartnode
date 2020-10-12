@@ -23,7 +23,10 @@ Once you ran above install script, open a new shell (or source $HOME/.profile), 
 ```
 rocketpool service config
 ```
-Please select infura as eth1 and lighthouse as eth2 client. Then you can start the eth1 and eth2 clients with:
+Please select infura as eth1 and lighthouse as eth2 client. 
+In the next step, log out and log in again, in order to be in the correct group to use docker.
+
+Then you can start the eth1 and eth2 clients with:
 ```
 rocketpool service start
 ```
