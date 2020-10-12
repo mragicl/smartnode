@@ -3,7 +3,7 @@
 
 ---
 
-Fork of the rocketpool x86_64 version, see: [rocketpool smartnode](https://github.com/rocket-pool/smartnode). Proof of concept which works with raspberry pi 4, running ubuntu 20.04 (64bit!). It loads the docker images from docker hub mragicl user. Only compiled for lighthouse! When you configure your rocketpool node, you have to choose infura as eth1 client and lighthouse as eth2 client. I will add the other clients at a later time.
+Fork of the rocketpool x86_64 version, see: [rocketpool smartnode](https://github.com/rocket-pool/smartnode). Proof of concept which works with raspberry pi 4, running [ubuntu 20.04.1 64bit](https://ubuntu.com/download/raspberry-pi). It loads the docker images from docker hub mragicl user. Only compiled for lighthouse! When you configure your rocketpool node, you have to choose infura as eth1 client and lighthouse as eth2 client. I will add the other clients at a later time.
 
 
 ## Installation
