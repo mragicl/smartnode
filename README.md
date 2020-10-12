@@ -23,7 +23,7 @@ Once you ran above install script, open a new shell (or source $HOME/.profile), 
 ```
 rocketpool service config
 ```
-Please select infura as eth1 and lighthouse as eth2 client. 
+Please select infura as eth1 and lighthouse as eth2 client. (There is also a geth docker image for the rpi4. I have not tested it yet, but you can try it out if you want).
 In the next step, log out and log in again, in order to be in the correct group to use docker.
 
 Then you can start the eth1 and eth2 clients with:
