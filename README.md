@@ -12,6 +12,7 @@ Download and run this script: [install.sh](https://raw.githubusercontent.com/mra
 ```bash
 cd $HOME
 wget https://raw.githubusercontent.com/mragicl/smartnode/v0.0.4-rpi4/downloads/install.sh
+chmod +x install.sh
 ./install.sh
 ```
 
